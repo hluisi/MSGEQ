@@ -27,12 +27,21 @@ void loop() {
   eq.read();
 
   // print the eq 
-  if (dpCOUNT % dpRATE == 0)
-    print_eq();
+  if (dpCOUNT % dpRATE == 0) {
+    print_raw_values();
+    //print_normalized_values();
+  }
 }
 
 // helper functions
-void print_eq() {
+void print_raw_values() {
+  for(byte i = 0; i < 7; i++) {
+    print_eq_value(eq.spectrum[i].raw);
+  }
+  Serial.println();
+}
+
+void print_normalized_values() {
   for(byte i = 0; i < 7; i++) {
     print_eq_value(eq.spectrum[i].value);
   }
