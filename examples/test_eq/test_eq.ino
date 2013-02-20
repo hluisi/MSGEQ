@@ -20,6 +20,9 @@ void setup() {
 }
 
 void loop() {
+	// inc dpCOUNT
+	dpCOUNT++;
+	
   // read the eq
   eq.read();
 
