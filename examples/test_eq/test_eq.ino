@@ -7,7 +7,7 @@
 #define analogPin 14
 
 //define the rate at which to print to Serial
-#define dpRATE 10
+#define dpRATE 100
 
 // the counter for printing
 unsigned int dpCOUNT = 0;
