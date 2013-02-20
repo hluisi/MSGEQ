@@ -31,7 +31,7 @@ void loop() {
 // helper functions
 void print_eq() {
   for(byte i = 0; i < 7; i++) {
-    print_eq_value(eq.spectrum[i]);
+    print_eq_value(eq.spectrum[i].value);
   }
   Serial.println();
 }
