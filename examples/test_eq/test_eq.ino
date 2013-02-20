@@ -2,8 +2,8 @@
 #include <MSGEQ.h>
 
 // define the pins
-#define strobePin 7
-#define resetPin 8
+#define strobePin 2
+#define resetPin 3
 #define analogPin 14
 
 //define the rate at which to print to Serial
@@ -20,9 +20,9 @@ void setup() {
 }
 
 void loop() {
-	// inc dpCOUNT
-	dpCOUNT++;
-	
+  // inc dpCOUNT
+  dpCOUNT++;
+  
   // read the eq
   eq.read();
 
