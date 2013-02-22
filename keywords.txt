@@ -14,6 +14,7 @@ read	KEYWORD2
 setResetPin	KEYWORD2
 setStrobePin	KEYWORD2
 setAnalogPin	KEYWORD2
+setDelay
 
 ##################################################
 #  setup and loop functions, and Serial (KEYWORD3)
@@ -28,7 +29,3 @@ VOLUME	LITERAL1
 ##################################################
 # Built-in variables (LITERAL2)
 ##################################################
-lowNoise	LITERAL2
-highNoise	LITERAL2
-spectrum 	LITERAL2
-spectrumNoise 	LITERAL2

@@ -33,10 +33,6 @@ private:
   uint8_t resetPin;   // MSGEQ reset pin
   uint8_t analogPin;  // MSGEQ analog pin
   unsigned int smooth_count;  // Count used for smoothing arrays
-  unsigned int beat_count;
-  unsigned int bpm_start;
-  int last_range;
-  
 
   void setResetPin(uint8_t);    // Set's the reset pin
   void setStrobePin(uint8_t);   // Set's the strobe pin
@@ -47,7 +43,6 @@ public:
   audio spectrum[7];  // MSGEQ spectrum array of the audio structure
 
   int VOLUME;         // Current VOLUME
-  int BPM;
 
     MSGEQ(uint8_t, uint8_t, uint8_t);  // constructor
 

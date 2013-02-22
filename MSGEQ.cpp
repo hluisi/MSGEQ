@@ -35,9 +35,6 @@ MSGEQ::MSGEQ(uint8_t s, uint8_t r, uint8_t a) {
   setDelay(30);      // Set the default delay to 30 microseconds
   VOLUME = 0;        // Set volume to 0
   smooth_count = -1; // Set smooth count to -1 so its 0 the first time through the read loop
-  beat_count = 0;
-  bpm_start = millis();
-  last_range = 0;
 
   // Init the arrays
   for (int i = 0; i < 7; i++) {
@@ -67,14 +64,6 @@ void MSGEQ::read() {
   
   // loop through each spectrum and save the values in an array
   for (int i = 0; i < 7; i++) {
-  	int check = millis();
-  	
-  	
-  	if (check - bpm_start > 1000) {
-  		BPM = beat_count; // * 2;
-  		beat_count = 0;
-  		bpm_start = millis();
-  	}
   	
   	// Try to pushing the MAX down and the MIN up keeping
   	// the range of the waveform somewhat balanced
@@ -130,10 +119,5 @@ void MSGEQ::read() {
   VOLUME = map(temp, 80, 1023, 0, 1023);
   VOLUME = constrain(VOLUME, 0, 1023);
   
-  if (spectrum[0].range_smoothed > last_range) {
-  	beat_count++;
-  }
-  
-  last_range = spectrum[0].range_smoothed;
   digitalWrite(resetPin, HIGH);
 }
