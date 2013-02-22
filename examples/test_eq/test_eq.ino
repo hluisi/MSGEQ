@@ -7,48 +7,40 @@
 #define analogPin 14
 
 //define the rate at which to print to Serial
-#define dpRATE 100
-
-// the counter for printing
-unsigned int dpCOUNT = 0;
+#define DELAY_RATE 5
+#define EQ_DELAY 60
 
 // create an eq object
 MSGEQ eq = MSGEQ(strobePin, resetPin, analogPin);
 
 void setup() {
-  Serial.begin(9600); // start serial 
+  eq.setDelay(EQ_DELAY);
+  Serial.begin(115200); // start serial 
 }
 
 void loop() {
-  // inc dpCOUNT
-  dpCOUNT++;
-  
   // read the eq
   eq.read();
+  
+  
 
   // print the eq 
-  if (dpCOUNT % dpRATE == 0) {
-    print_raw_values();
-    //print_normalized_values();
+  for (int i = 0; i < 7; i++) {
+    Serial.print(" ");
+    //Serial.print(eq.spectrum[i].smoothed);
+    Serial.print(eq.spectrum[i].balanced);
+    //Serial.print(eq.spectrum[i].raw);
   }
-}
-
-// helper functions
-void print_raw_values() {
-  for(byte i = 0; i < 7; i++) {
-    print_eq_value(eq.spectrum[i].raw);
-  }
+  Serial.print(" ");
+  Serial.print(eq.VOLUME);
+  
   Serial.println();
+  
+  delay(DELAY_RATE);
 }
 
-void print_normalized_values() {
-  for(byte i = 0; i < 7; i++) {
-    print_eq_value(eq.spectrum[i].value);
-  }
-  Serial.println();
-}
-
-void print_eq_value(int value) {
+/*
+void send_eq_value(int value) {
   if (value < 10) 
     Serial.print("   000");
   else if (value < 100) 
@@ -59,3 +51,4 @@ void print_eq_value(int value) {
     Serial.print("   ");
   Serial.print(value);
 }
+*/
