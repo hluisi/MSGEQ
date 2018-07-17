@@ -14,7 +14,7 @@ read	KEYWORD2
 setResetPin	KEYWORD2
 setStrobePin	KEYWORD2
 setAnalogPin	KEYWORD2
-setDelay
+setDelay	KEYWORD2
 
 ##################################################
 #  setup and loop functions, and Serial (KEYWORD3)
